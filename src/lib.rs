@@ -25,7 +25,7 @@ pub fn greet() -> String {
     String::from("Hello, rust-fn!")
 }
 
-#[derive(Serialize)]
+#[derive(Deserialize)]
 pub struct Name {
     pub name: String
 }
@@ -40,6 +40,18 @@ pub fn greet_json() -> JsValue {
     let msg_string = String::from("Hello, rust-fn!");
     let msg = Message {
         message: msg_string
+    };
+    JsValue::from_serde(&msg).unwrap()
+}
+
+#[wasm_bindgen]
+pub fn hello_json(i: &JsValue) -> JsValue {
+    let i_name: Name = i.into_serde()
+        .unwrap_or_else( |_e| {
+            Name { name: "World".to_string() }
+        });
+    let msg = Message {
+        message: format!("Hello, {}!", i_name.name)
     };
     JsValue::from_serde(&msg).unwrap()
 }
