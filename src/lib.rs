@@ -1,7 +1,7 @@
 mod utils;
 
 use wasm_bindgen::prelude::*;
-use js_sys::*;
+use serde::*;
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.
@@ -25,9 +25,21 @@ pub fn greet() -> String {
     String::from("Hello, rust-fn!")
 }
 
+#[derive(Serialize)]
+pub struct Name {
+    pub name: String
+}
+
+#[derive(Serialize)]
+pub struct Message {
+    pub message: String,
+}
+
 #[wasm_bindgen]
-pub fn take_jsvalue(j: JsValue) {
-    log(&format!("{:#?}",j));
-    let name = js_sys::Reflect::get(&j, &"name".into());
-    log(&format!("{:#?}",name));
+pub fn greet_json() -> JsValue {
+    let msg_string = String::from("Hello, rust-fn!");
+    let msg = Message {
+        message: msg_string
+    };
+    JsValue::from_serde(&msg).unwrap()
 }
