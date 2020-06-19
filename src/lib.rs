@@ -14,6 +14,11 @@ extern {
 }
 
 #[wasm_bindgen]
+pub fn hello_string(s: &str) -> String {
+    format!("Hello, {}!", s)
+}
+
+#[wasm_bindgen]
 pub fn greet() -> String {
     String::from("Hello, rust-fn!")
 }
