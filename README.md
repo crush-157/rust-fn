@@ -1,6 +1,6 @@
 # Example of using Rust & WebAssembly to build an Fn Function
 
-## Overview
+## Overview
 
 This example uses [wasm-pack](https://rustwasm.github.io/wasm-pack/) to compile the Rust code in `/src/lib.rs` to WebAssembly and build an NPM package.
 
