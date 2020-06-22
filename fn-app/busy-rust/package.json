@@ -6,6 +6,7 @@
 	"author": "",
 	"license": "Apache-2.0",
 	"dependencies": {
-		"@fnproject/fdk": ">=0.0.18"
+		"@fnproject/fdk": ">=0.0.18",
+    "@crush-157/rust-fn": ">=0.1.0"
 	}
 }

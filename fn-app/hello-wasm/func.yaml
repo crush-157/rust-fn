@@ -1,5 +1,0 @@
-schema_version: 20180708
-name: hello-wasm
-version: 0.0.6
-runtime: node
-entrypoint: node func.js
