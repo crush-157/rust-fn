@@ -29,17 +29,17 @@ If you are *not* using Cloud Shell, then you will need to:
 
 `cargo install wasm-pack`
 
-### npm.js account
+### npm.js account
 [Sign up](https://www.npmjs.com/signup) for an npm.js account if you don't have one already.
 
 ## Rust to WebAssembly
-### Use `wasm-pack` to create a WebAssembly package
+### Use `wasm-pack` to create a WebAssembly package
 Run the following command:
 `$ wasm-pack new rust-fn`
 
 This creates a new directory `./rust-fn` containing a skeleton Rust/wasm package.
 
-### Add serialisation support
+### Add serialisation support
 To be able to serialise and deserialise objects in Rust we need to add serialisation support.
 
 In the `./rust-fn` directory there is a `Cargo.toml` file. 
@@ -83,7 +83,7 @@ wasm-bindgen-test = "0.3.13"
 opt-level = "s"
 ```
 
-### Export Rust Functions
+### Export Rust Functions
 
 The boilerplate Rust code is in `./rust-fn/lib.rs`.
 
@@ -164,14 +164,14 @@ Note that there are two sets of functions which are equivalent but differ in arg
     - `greet_json()` and `hello_json()` return a JSON value.
     - `hello_json()` takes a JSON value as input.
 
-### Compile the Package
+### Compile the Package
 Run the command:
 
 `$ wasm-pack build --target nodejs --scope <your-npm.js-user-id>`
 
 This will create a package in the `./pkg` directory that can be used from node and published to npm.
 
-### Publish the Package
+### Publish the Package
 From the `./pkg` directory, run the command:
 
 `$ npm publish --access public`
@@ -203,7 +203,7 @@ Edit the `package.json` file to include your package:
 
 You can then reference the package in the JavaScript code of the function (`func.js`) of the Node.js function in the usual way.
 
-## Sample functions
+## Sample functions
 There are two sample functions:
 - `busy-rust`
 - `lazy-rust`
@@ -214,7 +214,7 @@ Parsing JSON in JavaScript is a bit easier than in Rust, but it's arguably more 
 
 Both styles are included here for completeness.
 
-### busy-rust
+### busy-rust
 The JSON payload is passed to the Rust function which parses and processes it.
 ```
 const fdk=require('@fnproject/fdk');
@@ -225,7 +225,7 @@ fdk.handle(function(input){
 })
 ```
 
-### lazy-rust
+### lazy-rust
 The JSON payload is parsed in JavaScript, and the relevant values passed as arguments to the Rust function. 
 
 ```
